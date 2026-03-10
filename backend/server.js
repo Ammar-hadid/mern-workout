@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/workout', workoutRoutes)
+app.use('/api/workouts', workoutRoutes)
 
 
 // Start de server

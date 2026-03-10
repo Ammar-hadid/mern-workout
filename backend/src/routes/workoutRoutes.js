@@ -1,16 +1,24 @@
 import express from 'express';
 
+// Workout model
+import workoutModel from '../models/Workout.js';
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.json({
-        message: 'GET all workouts',
-        data: []
-    })
+router.get('/', async (req, res) => {
+
+    try {
+        const workouts = await workoutModel.find();
+
+        res.status(200).json(workouts)
+    }
+    catch (error) {
+        res.status(400).json({ error: error })
+    }
 })
 
 router.get('/:id', (req, res) => {
-    const {id} = req.params;
+    const { id } = req.params;
 
     res.json({
         message: `GET workout ${id}`,
@@ -19,13 +27,15 @@ router.get('/:id', (req, res) => {
 })
 
 
-router.post('/', (req, res) => {
-    const {title, load, reps} = req.body;
+router.post('/', async (req, res) => {
+    const { title, reps, load } = req.body;
 
-    res.json({
-        message: 'POST workout',
-        data: {title, load, reps}
-    });
+    try {
+        const Workout = await workoutModel.create({ title, reps, load });
+        res.status(201).json(Workout);
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
 })
 
 
