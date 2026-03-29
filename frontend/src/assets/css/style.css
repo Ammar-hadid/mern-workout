@@ -1,0 +1,40 @@
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.workout-card {
+    border: 2px solid #000000;
+    background: rgba(0, 0, 0, .25);
+    padding: .5rem;
+}
+
+.workouts-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: rgba(0, 0, 0, .25);
+    padding: 1rem;
+    align-self: flex-start;
+    margin-top: 2rem;
+}
+
+form input,
+form button {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    padding: 12px 16px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: .5rem 0;
+}

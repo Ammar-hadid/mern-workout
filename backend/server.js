@@ -4,11 +4,17 @@ import workoutRoutes from './src/routes/workoutRoutes.js';
 
 import mongoose from 'mongoose'
 
+import cors from 'cors';
+
 // Maak Express app
 const app = express();
 
 // Haal PORT uit .env (of gebruik 4000)
 const PORT = process.env.PORT || 4000;
+
+app.use(cors({
+  origin: 'http://localhost:5173'
+}))
 
 // Middleware: lees JSON
 app.use(express.json());
