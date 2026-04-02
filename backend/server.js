@@ -1,6 +1,7 @@
 // Importeer Express
 import express from 'express';
 import workoutRoutes from './src/routes/workoutRoutes.js';
+import authRoutes from './src/routes/userRoutes.js'
 
 import mongoose from 'mongoose'
 
@@ -29,15 +30,8 @@ mongoose.connect(process.env.MONGO_URI)
     })
   })
 
-// Test route - reageer op GET /
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Mijn eerste backend!',
-    success: true
-  });
-});
-
 app.use('/api/workouts', workoutRoutes)
+app.use('/api/auth', authRoutes)
 
 
 // Start de server
