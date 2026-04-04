@@ -87,3 +87,15 @@ export const login = async (req, res) => {
         res.status(500).json({ error: 'Network error' })
     }
 }
+
+export const clear = async (req, res) => {
+    try {
+        const del = await User.deleteMany({});
+
+        res.status(200).json({ del, msg: 'all users deleted' });
+    }
+
+    catch (error) {
+        res.status(500).json({ error })
+    }
+}
